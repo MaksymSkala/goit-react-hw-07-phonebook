@@ -1,0 +1,16 @@
+.filter-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.filter-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  gap: 5px;
+  border: 1px solid #b6b6b6;
+}

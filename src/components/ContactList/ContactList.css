@@ -1,0 +1,26 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.contacts-button {
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+  cursor: pointer;
+  &:active {
+    background-color: rgb(111, 111, 252);
+    border-color: #000;
+  }
+}
