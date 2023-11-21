@@ -19,7 +19,9 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: (state, action) => {
       const { id, name, number } = action.payload;
-      const isContactUnique = state.items.findIndex((contact) => contact.name.toLowerCase() === name.toLowerCase()) === -1;
+      const isContactUnique = state.items.findIndex(
+        (contact) => contact.name.toLowerCase() === name.toLowerCase()
+      ) === -1;
 
       if (!isContactUnique) {
         alert(`${name} is already in contacts.`);
@@ -29,7 +31,14 @@ const contactsSlice = createSlice({
       state.items.push({ id, name, number });
     },
     deleteContact: (state, action) => {
-      state.items = state.items.filter((contact) => contact.id !== action.payload);
+      const contactId = action.payload;
+      const existingContactIndex = state.items.findIndex((contact) => contact.id === contactId);
+
+      if (existingContactIndex !== -1) {
+        state.items.splice(existingContactIndex, 1);
+      } else {
+        alert(`Invalid contactId: ${contactId}`);
+      }
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
