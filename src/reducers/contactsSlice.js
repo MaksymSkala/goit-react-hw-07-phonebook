@@ -1,9 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
-  const response = await fetch('https://655cbaa725b76d9884fddb88.mockapi.io/contacts/contacts');
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch('https://655cbaa725b76d9884fddb88.mockapi.io/contacts');
+    if (!response.ok) {
+      throw new Error('Failed to fetch contacts');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Failed to fetch contacts');
+  }
 });
 
 const contactsSlice = createSlice({
@@ -12,10 +19,7 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: (state, action) => {
       const { id, name, number } = action.payload;
-
-      const isContactUnique = state.items.findIndex(
-        (contact) => contact.name.toLowerCase() === name.toLowerCase()
-      ) === -1;
+      const isContactUnique = state.items.findIndex((contact) => contact.name.toLowerCase() === name.toLowerCase()) === -1;
 
       if (!isContactUnique) {
         alert(`${name} is already in contacts.`);
