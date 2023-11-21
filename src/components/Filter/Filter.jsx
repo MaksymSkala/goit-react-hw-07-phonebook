@@ -12,16 +12,19 @@ const Filter = () => {
   };
 
   return (
-    <label>
-      Find contacts by name:
-      <input
-        className="filter-input"
-        type="text"
-        name="filter"
-        value={filter} // Тут може виникати попередження
-        onChange={handleFilterChange}
-      />
-    </label>
+    <div>
+      <label>
+        Find contacts by name:
+        <input
+          className="filter-input"
+          type="text"
+          name="filter"
+          value={filter}
+          onChange={handleFilterChange}
+        />
+      </label>
+      <button onClick={() => dispatch(setFilter(''))}>Clear Filter</button>
+    </div>
   );
 };
 

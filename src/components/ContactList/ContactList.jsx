@@ -5,9 +5,9 @@ import './ContactList.css';
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contacts.items);
-  const isLoading = useSelector((state) => state.contacts.isLoading);
-  const error = useSelector((state) => state.contacts.error);
+  const contacts = useSelector((state) => state.items);
+  const isLoading = useSelector((state) => state.isLoading);
+  const error = useSelector((state) => state.error);
 
   React.useEffect(() => {
     dispatch(fetchContacts());
@@ -27,7 +27,7 @@ const ContactList = () => {
 
   return (
     <ul>
-      {contacts.map(({ id, name, number }) => (
+      {contacts && contacts.map(({ id, name, number }) => (
         <li key={id}>
           {name}: {number}
           <button className="contacts-button" type="button" onClick={() => handleDeleteContact(id)}>

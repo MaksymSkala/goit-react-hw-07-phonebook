@@ -1,9 +1,9 @@
 import React from 'react';
 import ContactForm from './ContactForm/ContactForm';
+import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter'; // Змінено тут
 
-function App() {
+const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
@@ -13,6 +13,6 @@ function App() {
       <ContactList />
     </div>
   );
-}
+};
 
 export default App;
