@@ -16,7 +16,7 @@ const ContactForm = () => {
     setNumber(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !number) {
@@ -24,9 +24,13 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, number }));
-    setName('');
-    setNumber('');
+    try {
+      await dispatch(addContact({ name, number }));
+      setName('');
+      setNumber('');
+    } catch (error) {
+      alert(`Failed to add contact: ${error.message}`);
+    }
   };
 
   return (
